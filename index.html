@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body onload="onInit()">
+    
+    <h1>Bookshop</h1>
+
+    
+    <div class="table-container">
+        <nav class="nav-container">
+            <label>
+                Min Rate:
+                <input type="range" min="0" max="10" value="3" class="filter-rate-range"
+                    onchange="this.title=this.value;onSetFilterBy({minRate: +this.value})" />
+            </label>
+
+            <label>
+                Sort by:
+                <select class="sort-by" onchange="onSetSortBy({sortBy: this.value})">
+                    <option value="">Select</option>
+                    <option value="name">By Name</option>
+                    <option value="price">By Price</option>
+                </select>
+            </label>
+
+            <div class="modes-container">
+                <button class="card-mode" onclick="switchMode('card')">card</button>
+                <button class="table-mode" onclick="switchMode('table')" disabled >table</button>
+            </div>
+        </nav>
+
+        <button class="btn-create" onclick="onAddBook()" type="button">Create new book</button>
+        <table>
+            <thead class='thead-container'></thead>
+            <tbody class='tbody-container'></tbody>
+        </table>
+
+        
+    </div>
+    <div class="pages-btn-container"> 
+        <a href="#" class="previous" onclick="onPrevPage()">&laquo; Previous</a>
+        <a href="#" class="next" onclick="onNextPage()">Next &raquo;</a>
+    </div>
+
+    <div class="modal-container">
+        <div class="detail-modal hide">
+        </div>
+    </div>
+
+    <div class='small-modal hide'></div>
+        
+    <script src="/js/services/util.service.js"></script>
+    <script src="/js/services/book.service.js"></script>
+    <script src="/js/book.controller.js"></script>
+</body>
+</html>
